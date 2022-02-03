@@ -15,7 +15,9 @@ var server = app.listen(process.env.PORT || 8080, function () {
     console.log("App now running on port", port);
 });
 
-const mbiTemplate = [{type: 'C' }, {type: 'A' }, {type: 'AN' }, {type: 'N' }, {type: '-'}, {type: 'A' }, {type: 'AN' }, {type: 'N' }, {type: '-'}, {type: 'A' }, {type: 'A' }, {type: 'N' }, {type: 'N' }]
+const mbiTemplate = [{type: 'C' }, {type: 'A' }, {type: 'AN' }, {type: 'N' }
+                    , {type: '-'}, {type: 'A' }, {type: 'AN' }, {type: 'N' }
+                    , {type: '-'}, {type: 'A' }, {type: 'A' }, {type: 'N' }, {type: 'N' }]
 
 const randomChar = function (type) {
     if (type.indexOf('-') > -1) return '-';
@@ -53,8 +55,13 @@ const verifyMbi = function(mbi){
     if(!mbi){
         return false;
     }
+
+    if(mbi.length != mbiTemplate.length){
+        return false;
+    }
     
     for(let i in mbi){
+
         if(mbi[i] === '-'){
             continue;
         }
