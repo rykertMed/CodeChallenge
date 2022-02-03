@@ -7,7 +7,7 @@ var app = express();
 
 app.use(bodyParser.json());
 
-var distDir = __dirname + "/dist/";
+var distDir = __dirname + "/dist/code-challenge/";
 app.use(express.static(distDir));
 
 var server = app.listen(process.env.PORT || 8080, function () {
